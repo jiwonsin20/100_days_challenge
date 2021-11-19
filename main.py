@@ -73,4 +73,22 @@ def leap_year():
         print("Not leap year")
 
 def pizza_order():
-    
+  print("Welcome to Python Pizza Deliveries")
+  size = input("What size pizza do you want? S, M or L: ").lower()
+  add_pepperoni = input("Do you want pepperoni? Y or N: ").lower()
+  extra_cheeze = input("Do you want extra cheese? Y or N: ").lower()
+  price = 0
+  if size == 's':
+    price += 15
+  elif size == 'm':
+    price += 20
+  elif size == 'l':
+    price += 25
+  if size == 's' and add_pepperoni == 'y':
+    price += 2
+  elif add_pepperoni == 'y':
+    price += 3
+  if extra_cheeze == 'y':
+    price += 1
+  print(f"Your final bill is ${price}")
+
