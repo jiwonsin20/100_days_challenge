@@ -92,3 +92,18 @@ def pizza_order():
     price += 1
   print(f"Your final bill is ${price}")
 
+def love_calculator():
+    first_user = input("What is your name?: ").lower()
+    second_user = input("What is your partner's name?: ").lower()
+    users_name = first_user+second_user
+    true_count = sum((map(users_name.count, ['t','r','u','e'])))
+    love_count = sum(map(users_name.count, ['l','o','v','e']))
+    total_value = true_count*10 + love_count
+    if total_value < 10 or total_value > 90:
+        print(f"Your score is {total_value}, you go together like coke an mentos.")
+    elif total_value > 40 and total_value <= 50:
+        print(f"Your score is {total_value}, you are alright together.")
+    else:
+        print(f"Your score is  {total_value}")
+
+
