@@ -128,3 +128,83 @@ def select_random_name():
     random_name_idx = random.randint(0,length_of_list - 1)
     print(f"Lucky winner is {names[random_name_idx]}")
 
+# A program whcih mark a spot with an X
+def x_marker():
+    row1 = [" "," "," "]
+    row2 = [" "," "," "]
+    row3 = [" "," "," "]
+    map = [row1, row2, row3]
+    print(f"{row1}\n{row2}\n{row3}")
+    position = print("Where do you want to put the treasure?")
+    column_num = int(input("Add Column number"))
+    row_num = int(input("Add row number"))
+    map[row_num-1][column_num-1] = 'X'
+    print(f"{row1}\n{row2}\n{row3}")
+
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+def rock_paper_scissors():
+    user_input = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for scissors: "))
+    computer_input = random.randint(0,2)
+    list_operation = ['Rock','Paper','Scissors']
+    # Relationship between rock paper ans scissors
+    # 0 < 1 < 2 <0
+    if user_input >2 or user_input < 0:
+        print("You typed an invalid number, you lose!")
+
+    else: 
+        if user_input == 2:
+            if computer_input == 1:
+                print(f"User input: {list_operation[user_input]} Computer Input: {list_operation[computer_input]}")
+                print("User Won!")
+            elif computer_input == 0:
+                print(f"User input: {list_operation[user_input]} Computer Input: {list_operation[computer_input]}")
+                print("Computer Won!")
+            else:
+                print("Draw")
+        elif computer_input == 2:
+            if user_input == 1:
+                print(f"User input: {list_operation[user_input]} Computer Input: {list_operation[computer_input]}")
+                print("Computer Won!")
+            elif user_input == 0:
+                print(f"User input: {list_operation[user_input]} Computer Input: {list_operation[computer_input]}")
+                print("User Won!")
+            else:
+                print("Draw")
+        else:
+            if user_input == computer_input +1:
+                print(f"User input: {list_operation[user_input]} Computer Input: {list_operation[computer_input]}")
+                print("User Won!")
+            elif user_input == computer_input:
+                print(f"User input: {list_operation[user_input]} Computer Input: {list_operation[computer_input]}")
+                print("Draw")
+            else:
+                print(f"User input: {list_operation[user_input]} Computer Input: {list_operation[computer_input]}")
+                print("Computer Won!")
+
+rock_paper_scissors()
