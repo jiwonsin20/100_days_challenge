@@ -104,6 +104,27 @@ def love_calculator():
     elif total_value > 40 and total_value <= 50:
         print(f"Your score is {total_value}, you are alright together.")
     else:
-        print(f"Your score is  {total_value}")
+        print(f"Your score is {total_value}")
 
+
+# Day 4 Challenge
+import random
+from warnings import simplefilter
+
+rand_int = random.randint(1,10)
+
+def heads_or_tails():
+    rand_head_or_tails = random.randint(0,1)
+    if rand_head_or_tails == 0:
+        print("Tails")
+    else:
+        print("Heads")
+
+# Select a random name from a list of names
+def select_random_name():
+    names_string = input("Give me everybody's names, separated by a comma. ")
+    names = names_string.split(', ')
+    length_of_list = len(names)
+    random_name_idx = random.randint(0,length_of_list - 1)
+    print(f"Lucky winner is {names[random_name_idx]}")
 
