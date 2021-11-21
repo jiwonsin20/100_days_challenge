@@ -207,4 +207,73 @@ def rock_paper_scissors():
                 print(f"User input: {list_operation[user_input]} Computer Input: {list_operation[computer_input]}")
                 print("Computer Won!")
 
-rock_paper_scissors()
+
+def average_height_calc():
+    student_list = input("Key in the list of heights of students, separated by comma : ").split()
+    total_height = 0
+    for students in student_list:
+        total_height += int(students)
+    avg_height = round(total_height/len(student_list))
+    print(avg_height)
+
+def highest_score():
+    list_scores = input("List of student's scores ").split()
+    high_score = 0
+
+    if len(list_scores) > 0:
+        for score in list_scores:
+            if int(score) > high_score:
+                high_score = int(score)
+            else:
+                continue
+        print(high_score) 
+    else:
+        return
+
+def even_sum():
+    sum = 0
+    for num in range(0,101):
+        if num % 2 == 0:
+            sum += num
+    print(f"Total sum of even numbers between 0 to 100 is {sum}")
+
+def fizz_buzz():
+    for num in range(0, 101):
+        if num % 3 == 0 and num % 5 == 0:
+            print("FizzBuzz")
+        elif num %3 == 0:
+            print("Fizz")
+        elif num % 5 == 0:
+            print("Buzz")
+        else:
+            print(num)
+
+def password_generator():
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+    # Welcoming message
+    print("Welcome to the Password Generator!")
+    password_length = int(input("How many letters would you like in your password "))
+    symbol_length = int(input("How many symbols would you like? "))
+    number_length = int(input("How many numbers would you like? "))
+
+    password_string = []
+
+    for i in range(symbol_length):
+        password_string.append(random.choice(symbols))
+    for i in range(number_length):
+        password_string.append(random.choice(numbers))
+    for idx in range(password_length - symbol_length - number_length):
+        password_string.append(random.choice(letters))
+    
+    print(password_string)
+
+    random.shuffle(password_string)
+
+    password_string = ''.join(password_string)
+    print(password_string)
+
+
+password_generator()
