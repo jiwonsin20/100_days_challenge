@@ -276,4 +276,4 @@ def password_generator():
     print(password_string)
 
 
-password_generator()
+# Day 7
