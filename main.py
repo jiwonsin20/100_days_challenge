@@ -274,6 +274,3 @@ def password_generator():
 
     password_string = ''.join(password_string)
     print(password_string)
-
-
-# Day 7
