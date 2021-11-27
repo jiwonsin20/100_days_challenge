@@ -1,5 +1,27 @@
 import random
 
+mr_hangman_dead = '''
+-----------
+|         |
+|         O
+|       / | \
+|        / \
+|        
+|
+-----------
+'''
+
+mr_hangman_default = '''
+-----------
+|         |
+|
+|       
+|        
+|        
+|
+-----------
+'''
+
 word_list = ["aardvark", "baboon","camel"]
 display = []
 chosen_word = word_list[random.randint(0, len(word_list) -1)]
@@ -7,9 +29,12 @@ for i in range(len(chosen_word)):
   display.append("_")
 print(display)
 
-user_guess = input("Guess a letter: ").lower()
+user_guess = input("Guess a letter: ").lower()  
 
-def show_word(word, user_letter):
+def change_display(word, guess):
+  for i in range(len(word)):
+    if word[i] == guess:
+      word[i] = guess
   
 
 def check_input(word, user_letter):
@@ -26,3 +51,5 @@ if guess:
   print("Correct Guess")
 else:
   print("Wrong")
+
+# if 
