@@ -35,6 +35,15 @@ def change_display(word, guess):
   
 
 def check_input(word, user_letter):
+  """Checks whether the user guess matches the word
+
+  Args:
+      word (list of String): The word that is automatically selected
+      user_letter (String): Letter the user guesses
+
+  Returns:
+      Boolean: True if the user guess is correct, False if wrong
+  """
   for letter in word:
     if letter == user_letter:
       return True
@@ -54,14 +63,14 @@ print(display)
 
 user_guess = input("Guess a letter: ").lower()  
 
-
-
 print(chosen_word)
 
 while num_tries <= len(chosen_word):
   guess = check_input(chosen_word, user_guess)
   if guess:
     print("Correct Guess")
+    next_guess = input("What is your next guess")
+    check_input(chosen_word, next_guess)
   else:
     print("Wrong, Try again!")
     num_tries+=1
