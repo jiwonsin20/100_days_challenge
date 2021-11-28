@@ -63,4 +63,4 @@ while num_tries <= 6:
     print(hangman_art.mr_hangman[num_tries])
     num_tries+=1
 
-print("Game Over")
+print("Game Over!")
