@@ -1,28 +1,20 @@
 import random
+import hangman_art
+import hangman_words as h_words
 
-mr_hangman_dead = '''
------------
-|         |
-|         O
-|       / | \
-|        / \
-|        
-|
------------
-'''
+# Basic key global variables
+word_list = h_words.word_list
+display = []
+chosen_word = word_list[random.randint(0, len(word_list) -1)]
+num_tries = 0
+print(hangman_art.logo)
 
-mr_hangman_default = '''
------------
-|         |
-|
-|       
-|        
-|        
-|
------------
-'''
+# Sets the parameters of the display
+for i in range(len(chosen_word)):
+  display.append("_")
+
 # Functions required for the logical processing
-def change_display(word, guess):
+def update_display(word, char):
   """Change the display list if the user guesses the correct character
 
   Args:
@@ -30,8 +22,8 @@ def change_display(word, guess):
       guess (String): Letter the user guesses
   """
   for i in range(len(word)):
-    if word[i] == guess:
-      word[i] = guess
+    if word[i] == char:
+      display[i] = char
   
 
 def check_input(word, user_letter):
@@ -50,29 +42,28 @@ def check_input(word, user_letter):
   
   return False
 
-# Basic key global variables
-word_list = ["aardvark", "baboon","camel"]
-display = []
-chosen_word = word_list[random.randint(0, len(word_list) -1)]
-num_tries = 0
-
-# Sets the parameters of the display
-for i in range(len(chosen_word)):
-  display.append("_")
-print(display)
-
-user_guess = input("Guess a letter: ").lower()  
-
 print(chosen_word)
 
-while num_tries <= len(chosen_word):
+while num_tries <= 6:
+  user_guess = input("Guess a letter: ").lower()  
   guess = check_input(chosen_word, user_guess)
   if guess:
+    if user_guess in display:
+      print("Repeated Guess: You guessed it already!\n"," ".join(display))
+      continue
     print("Correct Guess")
-    next_guess = input("What is your next guess")
-    check_input(chosen_word, next_guess)
+    update_display(chosen_word, user_guess)
+    print(" ".join(display))
+    print("\n")
+    if "_" not in display:
+      print(f"End of Game! You won!\nThe word was: {chosen_word}")
+      break
   else:
     print("Wrong, Try again!")
+    print(hangman_art.mr_hangman[num_tries])
     num_tries+=1
+
+print("Game Over")
+
 
 # if current guess is wrong, repeat until the number of tries are expired
