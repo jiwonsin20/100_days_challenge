@@ -64,6 +64,3 @@ while num_tries <= 6:
     num_tries+=1
 
 print("Game Over")
-
-
-# if current guess is wrong, repeat until the number of tries are expired
