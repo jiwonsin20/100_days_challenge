@@ -274,3 +274,24 @@ def password_generator():
 
     password_string = ''.join(password_string)
     print(password_string)
+
+# Day 8 Coding Challenge
+import math
+
+h = int(input("Height: "))
+w = int(input("Width: "))
+
+def can_coverage(height, width, coverage = 5):
+  num_cans = math.ceil(height * width / coverage)
+  return num_cans
+
+# print(f"Amount of can required is {can_coverage(h, w)}")
+
+def prime_number_check(number):
+  if number == 2 or number == 3:
+    return True
+  else:
+    for i in range(4, math.ceil(number/2)):
+    
+
+n= int(input("Enter number: "))
