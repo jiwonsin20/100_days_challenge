@@ -278,8 +278,8 @@ def password_generator():
 # Day 8 Coding Challenge
 import math
 
-h = int(input("Height: "))
-w = int(input("Width: "))
+# h = int(input("Height: "))
+# w = int(input("Width: "))
 
 def can_coverage(height, width, coverage = 5):
   num_cans = math.ceil(height * width / coverage)
@@ -291,7 +291,14 @@ def prime_number_check(number):
   if number == 2 or number == 3:
     return True
   else:
-    for i in range(4, math.ceil(number/2)):
-    
+    for i in range(2, number+1):
+      if i == number:
+        return True
+      else:
+        if number % i == 0:
+          return False
 
-n= int(input("Enter number: "))
+# n = int(input("Enter number: "))
+# isPrime = prime_number_check(n)
+# print(isPrime)
+
