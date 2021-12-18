@@ -15,8 +15,9 @@ logo = '''
 '''
 
 name_bid_dict = {}
-highest_bid = 0
+highest_bid = ""
 other_bidders = 'yes'
+print(logo)
 
 def clearConsole():
   command = "clear"
@@ -25,23 +26,23 @@ def clearConsole():
   os.system(command)
 
 def add_to_dictionary(name, bid):
-  name_bid_dict['Name'] = name
-  name_bid_dict['Bid Amount'] = bid
+  name_bid_dict[name] = bid
 
-def check_highest_bid(dictionary):
+def check_highest_bid(dictionary, best_bid):
   for key in dictionary:
-    if key['Bid Amount'] > highest_bid:
-      highest_bid = key['Bid Amount']
-  return highest_bid
+    if dictionary[key] > dictionary[best_bid]:
+      best_bid = key
+  return best_bid
 
 while other_bidders == 'yes':
   name_input = input('What is your name?: ')
-  bid_input = int(input('What\'s your bid?: '))
+  bid_input = input('What\'s your bid?: $')
   add_to_dictionary(name_input, bid_input)
-  highest_bid = check_highest_bid(name_bid_dict)
+  highest_bid = check_highest_bid(name_bid_dict, name_input)
   other_bidders = input('Are there any other bidders? Type \'yes\' or \'no\'. ')
+  clearConsole()
 
-
+print(f"The winner is {highest_bid} with a bid of ${name_bid_dict[highest_bid]}")
 
 
 
