@@ -28,7 +28,22 @@ def run_game(diff, num):
     
   elif diff == 'easy':
     chances = 10
-    return
+    while not correct_guess:
+      if chances != 0:
+        print(f"You have {chances} attempts remaining to guess the number")
+        guess = int(input("   Make a guess: "))
+        if guess > num:
+          print("Too high.")
+          print("Guess Again.")
+          chances -=1
+        elif guess < num:
+          print("Too low.")
+          print("Guess Again.")
+          chances -=1
+        else:
+          print(f"You got it! the answer was {num}")
+          correct_guess = True
+    print("You are out of your guesses. You lose")
 
 print("Welcome to the Number Guessing Game!")
 
