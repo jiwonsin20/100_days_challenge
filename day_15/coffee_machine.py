@@ -4,6 +4,8 @@ import menu as menu
 # Global Variable
 RESOURCES_CAPACITY = menu.resources
 
+RESOURCES_CAPACITY["Money"] = 0
+
 
 def check_price(choice, v):
     price = menu.MENU[choice]["cost"]
@@ -15,7 +17,12 @@ def check_price(choice, v):
 
 def print_report(res):
     for key, val in res.items():
-        print(key, ":", val)
+        if key.lower() == "water" or key.lower() == "milk":
+            print(key, ":", val, "ml")
+        elif key.lower() == "coffee":
+            print(key, ":", val, "g")
+        else:
+            print(key, ": $", val)
 
 
 def check_resources(water, milk, coffee, res):
@@ -25,17 +32,27 @@ def check_resources(water, milk, coffee, res):
         return False
 
 
-def insufficient_status(c, res):
+def check_insufficient_ingredient(c, res):
     insufficient_lst = []
-    c_water = menu.MENU[c]["water"]
-    c_milk = menu.MENU[c]["milk"]
-    c_coffee = menu.MENU[c]["coffee"]
+    c_water = menu.MENU[c]["ingredients"]["water"]
+    c_milk = menu.MENU[c]["ingredients"]["milk"]
+    c_coffee = menu.MENU[c]["ingredients"]["coffee"]
+    for key, value in res.items():
+        if value < c_water:
+            return key
+        elif value < c_milk:
+            return key
+        elif value < c_coffee:
+            return key
+        else:
+            return "Error"
 
 
-def update_resources(water, milk, coffee, res):
+def update_resources(water, milk, coffee, coin, res):
     res["water"] -= water
     res["milk"] -= milk
     res["coffee"] -= coffee
+    res["Money"] += coin
 
 
 def run():
@@ -59,10 +76,12 @@ def run():
                     nickles_input = int(input("    How many nickles?: "))
                     pennies_input = int(input("    How many pennies?: "))
                     coin_value = quarter_input * 0.25 + dime_input * 0.10 + nickles_input * 0.05 + pennies_input * 0.01
+
                     if check_price(coffee_choice, coin_value):
-                        update_resources(water_req, milk_req, coffee_req, RESOURCES_CAPACITY)
                         change = round(coin_value - coffee_price, 2)
+                        update_resources(water_req, milk_req, coffee_req, coffee_price, RESOURCES_CAPACITY)
                         print(f"Here is $ {change} in change.")
+                        print(f"Here is your {coffee_choice}. Enjoy!")
                         break
                     else:
                         print("Sorry that's not enough money. Money refunded")
@@ -75,8 +94,8 @@ def run():
                             print("Incorrect Input, Shutting down.")
                             break
             else:
-                print("Sorry there is not enough")
-
+                ingredient = check_insufficient_ingredient(coffee_choice, RESOURCES_CAPACITY)
+                print(f"Sorry there is not enough {ingredient}")
 
 
 run()
