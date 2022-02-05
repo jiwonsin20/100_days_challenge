@@ -13,7 +13,7 @@ vs_logo = logo.vs
 FINAL_SCORE = 0
 
 
-## List of functions
+# List of functions
 
 # Function 1: Clear the terminal
 
@@ -53,7 +53,7 @@ def compare_followers(op_a, op_b):
 
 
 # Records user input
-def inital_load():
+def initial_load():
     global FINAL_SCORE
 
     option_a = choose_element(data)
@@ -98,4 +98,4 @@ def loop_sequence(op_a, op_b):
 
 print("Out")
 
-inital_load()
+initial_load()
