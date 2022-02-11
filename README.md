@@ -21,7 +21,9 @@ This repo is for 100 days challenge I did with Python. (2021-2022)
 ####Day 17
 - True/False Quiz Brain game
 ####Day 18
+- Failed... (Python package issues)
 ####Day 19
+- Usage of turtle packages and python GUI
 ####Day 20
 ####Day 21
 ####Day 22
