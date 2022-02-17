@@ -1,5 +1,5 @@
 # 100 Days Challenge
-This repo is for 100 days challenge I did with Python. (2021-2022)
+This repo is for 100 days challenge I did with Python. (2021-2022).
 
 ##Contents
 ####Day 1 ~ Day 9
@@ -25,7 +25,9 @@ This repo is for 100 days challenge I did with Python. (2021-2022)
 ####Day 19
 - Usage of turtle packages and python GUI
 ####Day 20
+- First part of Snake Game
 ####Day 21
+- Second part of Snake Game, Fully implemented
 ####Day 22
 ####Day 23
 ####Day 24
